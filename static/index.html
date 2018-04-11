@@ -155,6 +155,36 @@
 
 	</div>
 
+	<footer>
+			<div>
+				<span>
+					<a href="https://24x7files.com" target="_blank">cloud-torrent Pro</a> version {{ state.Stats.Version }} - </span>
+				<span ng-if="numKeys(state.Users) > 1">{{ numKeys(state.Users) }} users connected - </span>
+				
+			</div>
+			<div>
+				<span ng-if="state.Stats.System.set">
+					<span class="extra">
+						goroutines {{ state.Stats.System.goRoutines }},
+					</span>
+					<span class="extra">
+						gomem {{ state.Stats.System.goMemory | bytes }},
+					</span>
+					<span>
+						cpu {{ state.Stats.System.cpu | round }}%,
+					</span>
+					<span>
+						mem {{ (100*state.Stats.System.memoryUsed/state.Stats.System.memoryTotal) | round }}%,
+					</span>
+					<span>
+						disk {{ (100*state.Stats.System.diskUsed/state.Stats.System.diskTotal) | round }}%,
+					</span>
+				</span>
+				<span ng-if="state.Stats.Uptime">up {{ ago(state.Stats.Uptime) }}</span>
+			</div>
+
+</footer>
+	
 	<script src="libs/jquery/jquery.min.js"></script>
 	<script src="libs/semantic/dist/semantic.min.js"></script>
 	<script src="libs/angular/angular.min.js"></script>
